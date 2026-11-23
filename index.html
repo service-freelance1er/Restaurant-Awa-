@@ -1,0 +1,1024 @@
+i
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="Restaurant Awa à Dakar Almadies. Découvrez nos pizzas, chawarmas, poissons, viandes et jus. Commandez sur WhatsApp.">
+<title>Restaurant Awa | Dakar Almadies</title>
+
+<!-- Google Fonts : Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome : vraie bibliothèque d'icônes -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+:root{
+ --primary:#e85d04;
+ --secondary:#ffba08;
+ --dark:#171717;
+ --light:#fff;
+ --bg:#fffaf5;
+ --text:#282828;
+ --muted:#777;
+ --card:#fff;
+ --border:#eee;
+ --shadow:0 8px 30px rgba(0,0,0,.08);
+}
+body.dark{
+ --dark:#fff;
+ --light:#171717;
+ --bg:#111;
+ --text:#f5f5f5;
+ --muted:#bbb;
+ --card:#202020;
+ --border:#383838;
+ --shadow:0 8px 30px rgba(0,0,0,.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+ font-family:'Poppins',sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.7;
+ transition:.3s;
+}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.container{width:min(1150px,92%);margin:auto}
+section{padding:85px 0}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title span{color:var(--primary);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:13px}
+.section-title h2{font-size:clamp(28px,5vw,40px);margin:8px 0}
+.section-title p{color:var(--muted)}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ padding:13px 23px;border:0;border-radius:8px;
+ background:var(--primary);color:white;font-weight:600;
+ transition:.3s;
+}
+.btn:hover{background:#c94e00;transform:translateY(-2px)}
+.btn-outline{background:transparent;border:2px solid var(--primary);color:var(--primary)}
+.btn-outline:hover{color:white}
+.topbar{background:#171717;color:#fff;padding:9px 0;font-size:12px}
+.topbar .container{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+header{
+ position:sticky;top:0;z-index:1000;
+ background:var(--light);box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+.navbar{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:25px;font-weight:800;color:var(--primary);white-space:nowrap}
+.logo span{color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:17px}
+.nav-links a{font-size:12px;font-weight:600;transition:.2s}
+.nav-links a:hover{color:var(--primary)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.icon-btn{border:0;background:transparent;color:var(--text);font-size:19px;position:relative}
+.cart-count{position:absolute;top:-9px;right:-10px;background:var(--primary);color:white;border-radius:50%;font-size:10px;padding:1px 6px}
+.menu-toggle{display:none}
+.hero{
+ min-height:590px;display:flex;align-items:center;
+ background:linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.35)),
+ url('images/awa-1.jpg') center/cover no-repeat;
+ color:white;
+}
+.hero-content{max-width:650px;padding:70px 0}
+.hero h1{font-size:clamp(38px,7vw,65px);line-height:1.2;margin:17px 0}
+.hero h1 span{color:#ff9f1c}
+.hero p{font-size:16px;color:#eee;margin-bottom:27px}
+.hero-label{display:inline-block;background:rgba(232,93,4,.2);border:1px solid var(--primary);padding:8px 15px;border-radius:30px;color:#ffb36b;font-size:13px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:-40px;position:relative}
+.feature{background:var(--card);box-shadow:var(--shadow);padding:25px;border-radius:12px;text-align:center}
+.feature i{font-size:28px;color:var(--primary);margin-bottom:10px}
+.feature h3{font-size:16px}
+.feature p{font-size:12px;color:var(--muted)}
+.menu-tools{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.search-box{max-width:380px;width:100%;position:relative}
+.search-box input{width:100%;padding:13px 45px 13px 16px;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:8px;outline:none}
+.search-box i{position:absolute;right:15px;top:16px;color:var(--muted)}
+.filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.filter-btn{padding:9px 16px;border:1px solid var(--border);border-radius:25px;background:var(--card);color:var(--text);font-size:12px}
+.filter-btn.active,.filter-btn:hover{background:var(--primary);color:white;border-color:var(--primary)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:23px}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:13px;overflow:hidden;box-shadow:var(--shadow);transition:.3s}
+.product-card:hover{transform:translateY(-6px)}
+.product-image{height:220px;position:relative;overflow:hidden;background:#eee}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.product-card:hover .product-image img{transform:scale(1.06)}
+.product-tag{position:absolute;top:13px;left:13px;background:var(--primary);color:white;padding:5px 10px;border-radius:20px;font-size:11px}
+.product-info{padding:19px}
+.product-info h3{font-size:17px;margin-bottom:5px}
+.product-info p{font-size:12px;color:var(--muted);min-height:42px}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:15px}
+.price{font-size:14px;font-weight:800;color:var(--primary)}
+.add-btn{background:var(--primary);border:0;color:white;border-radius:7px;padding:10px 13px;font-size:12px}
+.add-btn:hover{background:#c94e00}
+.empty-message{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-image{height:410px;border-radius:15px;overflow:hidden}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-text h2{font-size:34px;margin:10px 0}
+.about-text p{color:var(--muted);margin-bottom:15px}
+.check-list{list-style:none;margin:20px 0}
+.check-list li{margin:9px 0}
+.check-list i{color:var(--primary);margin-right:10px}
+.page-section{border-top:1px solid var(--border)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery-grid img{width:100%;height:230px;object-fit:cover;border-radius:10px;transition:.3s}
+.gallery-grid img:hover{transform:scale(1.025)}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:var(--card);padding:25px;border-radius:12px;box-shadow:var(--shadow)}
+.stars{color:#ffb703;margin-bottom:12px}
+.review p{font-size:13px;color:var(--muted)}
+.review h4{margin-top:15px}
+.forms-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.form-card,.contact-card{background:var(--card);padding:28px;border-radius:12px;box-shadow:var(--shadow)}
+.form-card h3,.contact-card h3{margin-bottom:20px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{
+ width:100%;padding:12px;border:1px solid var(--border);
+ border-radius:7px;background:var(--bg);color:var(--text);outline:none;
+}
+.form-group textarea{min-height:110px;resize:vertical}
+.contact-info{display:grid;gap:20px}
+.contact-item{display:flex;gap:15px;align-items:center}
+.contact-item i{font-size:22px;color:var(--primary);width:30px}
+.contact-item p{font-size:13px;color:var(--muted)}
+.contact-item strong{display:block;color:var(--text)}
+.map-frame{width:100%;height:300px;border:0;border-radius:12px;margin-top:25px}
+.cart-layout{display:grid;grid-template-columns:1fr 330px;gap:25px}
+.cart-items,.cart-summary{background:var(--card);padding:22px;border-radius:12px;box-shadow:var(--shadow)}
+.cart-item{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid var(--border)}
+.cart-item h4{font-size:14px}
+.cart-item p{font-size:12px;color:var(--primary);font-weight:600}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:28px;height:28px;border:0;background:var(--primary);color:white;border-radius:5px}
+.remove-btn{border:0;background:transparent;color:#e63946;font-size:17px}
+.cart-summary h3{margin-bottom:20px}
+.total-line{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.total-line strong{color:var(--primary)}
+.cart-summary .btn{width:100%;margin-top:20px}
+.policy{max-width:850px;margin:auto;background:var(--card);padding:30px;border-radius:12px}
+.policy h3{margin:22px 0 8px}
+.policy p{color:var(--muted);font-size:14px;margin-bottom:12px}
+footer{background:#171717;color:white;padding:55px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
+footer h3{color:#ff8c42;margin-bottom:17px}
+footer p,footer a{font-size:13px;color:#bbb}
+footer a{display:block;margin:8px 0}
+footer a:hover{color:white}
+.footer-bottom{border-top:1px solid #333;margin-top:35px;padding-top:20px;text-align:center;font-size:12px;color:#aaa}
+.socials{display:flex;gap:15px;margin-top:15px}
+.socials a{font-size:20px}
+.whatsapp-float{position:fixed;bottom:22px;right:20px;width:58px;height:58px;border-radius:50%;background:#25d366;color:white;display:flex;align-items:center;justify-content:center;font-size:29px;z-index:999;box-shadow:0 5px 20px #0003}
+.modal{position:fixed;inset:0;background:#000a;z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal-content{background:var(--card);color:var(--text);padding:28px;border-radius:13px;width:min(450px,100%);position:relative}
+.modal-close{position:absolute;right:17px;top:12px;border:0;background:none;color:var(--text);font-size:24px}
+.modal-content img{width:100%;height:200px;object-fit:cover;border-radius:9px;margin:15px 0}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#222;color:white;padding:12px 20px;border-radius:8px;z-index:3000;display:none;font-size:13px}
+.toast.show{display:block}
+@media(max-width:950px){
+ .nav-links{display:none;position:absolute;top:76px;left:0;width:100%;background:var(--light);padding:20px;box-shadow:var(--shadow);flex-direction:column;align-items:flex-start;gap:16px}
+ .nav-links.open{display:flex}
+ .menu-toggle{display:block}
+ .products{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+ section{padding:60px 0}
+ .hero{min-height:520px}
+ .hero-content{padding:50px 0}
+ .features{grid-template-columns:1fr;margin-top:20px}
+ .products,.gallery-grid,.reviews,.forms-grid,.about-grid,.footer-grid{grid-template-columns:1fr}
+ .product-image{height:230px}
+ .about-image{height:280px}
+ .cart-layout{grid-template-columns:1fr}
+ .cart-item{flex-wrap:wrap}
+ .topbar .container{justify-content:center}
+ .section-title{margin-bottom:28px}
+ .gallery-grid img{height:250px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+ <div class="container">
+  <span><i class="fa-solid fa-location-dot"></i> Dakar Almadies</span>
+  <span><i class="fa-brands fa-whatsapp"></i> +221 55 061 65 53</span>
+ </div>
+</div>
+
+<header>
+ <div class="container navbar">
+  <a href="#accueil" class="logo">Restaurant <span>Awa.</span></a>
+
+  <nav class="nav-links" id="navLinks">
+   <a href="#accueil">Accueil</a>
+   <a href="#menu">Menu</a>
+   <a href="#pizza">Pizza</a>
+   <a href="#chawarma">Chawarma</a>
+   <a href="#poisson-viande">Poisson & Viande</a>
+   <a href="#detail">Détail</a>
+   <a href="#panier">Panier</a>
+   <a href="#reservation">Réservation</a>
+   <a href="#galerie">Galerie</a>
+   <a href="#avis">Avis</a>
+   <a href="#contact">Contact</a>
+   <a href="#cgv">CGV</a>
+   <a href="#politique">Politique</a>
+  </nav>
+
+  <div class="nav-actions">
+   <button class="icon-btn" id="themeToggle" aria-label="Changer le thème"><i class="fa-solid fa-moon"></i></button>
+   <a href="#panier" class="icon-btn" aria-label="Panier"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span></a>
+   <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Ouvrir le menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+ </div>
+</header>
+
+<main>
+
+<!-- ACCUEIL -->
+<section class="hero" id="accueil">
+ <div class="container">
+  <div class="hero-content">
+   <span class="hero-label">Bienvenue chez Restaurant Awa</span>
+   <h1>Le plaisir du goût à <span>Dakar</span></h1>
+   <p>Découvrez nos délicieuses pizzas, chawarmas, poissons, viandes et jus dans une ambiance chaleureuse à Dakar Almadies.</p>
+   <div class="hero-buttons">
+    <a href="#menu" class="btn"><i class="fa-solid fa-utensils"></i> Découvrir le menu</a>
+    <a href="#reservation" class="btn btn-outline">Réserver une table</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<div class="container features">
+ <div class="feature"><i class="fa-solid fa-fire-burner"></i><h3>Saveurs gourmandes</h3><p>Des plats pour tous les goûts.</p></div>
+ <div class="feature"><i class="fa-solid fa-heart"></i><h3>Accueil chaleureux</h3><p>Un moment agréable chez Awa.</p></div>
+ <div class="feature"><i class="fa-solid fa-mobile-screen-button"></i><h3>Commande facile</h3><p>Commandez directement sur WhatsApp.</p></div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+ <div class="container">
+  <div class="section-title">
+   <span>Notre carte</span>
+   <h2>Découvrez notre menu</h2>
+   <p>Choisissez vos plats préférés.</p>
+  </div>
+
+  <div class="menu-tools">
+   <div class="search-box">
+    <input type="search" id="searchInput" placeholder="Rechercher un plat...">
+    <i class="fa-solid fa-magnifying-glass"></i>
+   </div>
+  </div>
+
+  <div class="filters">
+   <button class="filter-btn active" data-filter="all">Tout</button>
+   <button class="filter-btn" data-filter="pizza">Pizza</button>
+   <button class="filter-btn" data-filter="chawarma">Chawarma</button>
+   <button class="filter-btn" data-filter="poisson">Poisson</button>
+   <button class="filter-btn" data-filter="viande">Viande</button>
+   <button class="filter-btn" data-filter="jus">Jus</button>
+  </div>
+
+  <div class="products" id="productList"></div>
+ </div>
+</section>
+
+<!-- PIZZA -->
+<section id="pizza" class="page-section">
+ <div class="container">
+  <div class="section-title">
+   <span>Nos spécialités</span>
+   <h2>Nos pizzas</h2>
+   <p>Des pizzas gourmandes pour vos envies.</p>
+  </div>
+  <div class="products" id="pizzaList"></div>
+ </div>
+</section>
+
+<!-- CHAWARMA -->
+<section id="chawarma" class="page-section">
+ <div class="container">
+  <div class="section-title">
+   <span>Une pause gourmande</span>
+   <h2>Chawarma Douce</h2>
+   <p>Découvrez notre sélection de chawarmas.</p>
+  </div>
+  <div class="products" id="chawarmaList"></div>
+ </div>
+</section>
+
+<!-- POISSON ET VIANDE -->
+<section id="poisson-viande" class="page-section">
+ <div class="container">
+  <div class="section-title">
+   <span>Les incontournables</span>
+   <h2>Poisson & Viande</h2>
+   <p>Des plats savoureux pour vos repas.</p>
+  </div>
+  <div class="products" id="mainDishesList"></div>
+ </div>
+</section>
+
+<!-- A PROPOS -->
+<section id="detail">
+ <div class="container about-grid">
+  <div class="about-image">
+   <img src="images/awa-8.jpg" alt="Restaurant Awa" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900'">
+  </div>
+  <div class="about-text">
+   <span style="color:var(--primary);font-weight:700">À PROPOS DE NOUS</span>
+   <h2>Bienvenue au Restaurant Awa</h2>
+   <p>Situé à Dakar Almadies, Restaurant Awa vous accueille pour découvrir une sélection de plats gourmands et de boissons.</p>
+   <p>Notre objectif est de vous offrir une expérience agréable, avec un menu varié et une commande simple.</p>
+   <ul class="check-list">
+    <li><i class="fa-solid fa-circle-check"></i> Une carte variée</li>
+    <li><i class="fa-solid fa-circle-check"></i> Commande WhatsApp</li>
+    <li><i class="fa-solid fa-circle-check"></i> Réservation de table</li>
+   </ul>
+   <a href="#contact" class="btn">Nous contacter</a>
+  </div>
+ </div>
+</section>
+
+<!-- PANIER -->
+<section id="panier" class="page-section">
+ <div class="container">
+  <div class="section-title">
+   <span>Votre sélection</span>
+   <h2>Mon panier</h2>
+   <p>Retrouvez les plats que vous avez sélectionnés.</p>
+  </div>
+  <div class="cart-layout">
+   <div class="cart-items" id="cartItems">
+    <p>Votre panier est vide.</p>
+   </div>
+   <div class="cart-summary">
+    <h3>Résumé de la commande</h3>
+    <div class="total-line"><span>Articles</span><span id="subtotal">0 FCFA</span></div>
+    <div class="total-line"><span>Livraison</span><span>À confirmer</span></div>
+    <div class="total-line"><strong>Total</strong><strong id="total">0 FCFA</strong></div>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px">Les éventuels frais de livraison seront confirmés sur WhatsApp.</p>
+    <button class="btn" id="checkoutBtn"><i class="fa-brands fa-whatsapp"></i> Commander sur WhatsApp</button>
+    <button class="btn btn-outline" style="width:100%;margin-top:10px" id="clearCart">Vider le panier</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation" class="page-section">
+ <div class="container">
+  <div class="section-title">
+   <span>Votre table vous attend</span>
+   <h2>Réservation</h2>
+   <p>Envoyez votre demande de réservation sur WhatsApp.</p>
+  </div>
+  <div class="forms-grid">
+   <div class="form-card">
+    <h3><i class="fa-solid fa-calendar-check" style="color:var(--primary)"></i> Réserver une table</h3>
+    <form id="reservationForm">
+     <div class="form-group"><label for="resName">Votre nom</label><input id="resName" required placeholder="Votre nom complet"></div>
+     <div class="form-group"><label for="resPhone">Téléphone</label><input id="resPhone" required type="tel" placeholder="Votre numéro"></div>
+     <div class="form-group"><label for="resDate">Date</label><input id="resDate" required type="date"></div>
+     <div class="form-group"><label for="resTime">Heure souhaitée</label><input id="resTime" required type="time"></div>
+     <div class="form-group"><label for="resPeople">Nombre de personnes</label><select id="resPeople"><option>1 personne</option><option>2 personnes</option><option>3 personnes</option><option>4 personnes</option><option>5 personnes</option><option>6 personnes</option><option>7 personnes ou plus</option></select></div>
+     <div class="form-group"><label for="resNote">Message (facultatif)</label><textarea id="resNote" placeholder="Votre demande..."></textarea></div>
+     <button class="btn" type="submit"><i class="fa-brands fa-whatsapp"></i> Envoyer la réservation</button>
+    </form>
+   </div>
+   <div class="contact-card">
+    <h3>Informations pratiques</h3>
+    <div class="contact-info">
+     <div class="contact-item"><i class="fa-solid fa-location-dot"></i><div><strong>Adresse</strong><p>Dakar Almadies, Sénégal</p></div></div>
+     <div class="contact-item"><i class="fa-brands fa-whatsapp"></i><div><strong>WhatsApp</strong><p>+221 55 061 65 53</p></div></div>
+     <div class="contact-item"><i class="fa-solid fa-calendar"></i><div><strong>Réservation</strong><p>Demande à confirmer par WhatsApp.</p></div></div>
+    </div>
+    <a class="btn" style="margin-top:25px" href="https://wa.me/22155061653" target="_blank" rel="noopener">Contacter Restaurant Awa</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie" class="page-section">
+ <div class="container">
+  <div class="section-title">
+   <span>En images</span>
+   <h2>Notre galerie</h2>
+   <p>Découvrez quelques images de plats et d'ambiance.</p>
+  </div>
+  <div class="gallery-grid">
+   <img src="images/awa-1.jpg" alt="Restaurant Awa - image 1" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700'">
+   <img src="images/awa-2.jpg" alt="Restaurant Awa - image 2" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo- pizza'">
+   <img src="images/awa-3.jpg" alt="Restaurant Awa - image 3" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?w=700'">
+   <img src="images/awa-4.jpg" alt="Restaurant Awa - image 4" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1529042410759-befb1204b468?w=700'">
+   <img src="images/awa-5.jpg" alt="Restaurant Awa - image 5" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?w=700'">
+   <img src="images/awa-6.jpg" alt="Restaurant Awa - image 6" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700'">
+  </div>
+ </div>
+</section>
+
+<!-- AVIS -->
+<section id="avis" class="page-section">
+ <div class="container">
+  <div class="section-title">
+   <span>Votre expérience</span>
+   <h2>Avis des clients</h2>
+   <p>Partagez votre expérience avec Restaurant Awa.</p>
+  </div>
+  <div class="reviews" id="reviewList">
+   <div class="review"><div class="stars">★★★★★</div><p>Bienvenue chez Restaurant Awa. Découvrez notre menu et partagez votre expérience.</p><h4>Restaurant Awa</h4></div>
+   <div class="review"><div class="stars">★★★★★</div><p>Votre satisfaction nous tient à cœur. Nous serons heureux de recevoir vos commentaires.</p><h4>Restaurant Awa</h4></div>
+   <div class="review"><div class="stars">★★★★★</div><p>Merci de votre intérêt pour notre restaurant à Dakar Almadies.</p><h4>Restaurant Awa</h4></div>
+  </div>
+  <div class="form-card" style="max-width:600px;margin:30px auto 0">
+   <h3>Donnez votre avis</h3>
+   <form id="reviewForm">
+    <div class="form-group"><label for="reviewName">Votre nom</label><input id="reviewName" required placeholder="Votre nom"></div>
+    <div class="form-group"><label for="reviewRating">Votre note</label><select id="reviewRating"><option value="5">★★★★★ - 5 étoiles</option><option value="4">★★★★ - 4 étoiles</option><option value="3">★★★ - 3 étoiles</option><option value="2">★★ - 2 étoiles</option><option value="1">★ - 1 étoile</option></select></div>
+    <div class="form-group"><label for="reviewText">Votre commentaire</label><textarea id="reviewText" required placeholder="Votre expérience..."></textarea></div>
+    <button class="btn" type="submit">Publier mon avis</button>
+   </form>
+   <p style="font-size:11px;color:var(--muted);margin-top:12px">Les avis publiés sont enregistrés uniquement sur cet appareil.</p>
+  </div>
+ </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="page-section">
+ <div class="container">
+  <div class="section-title">
+   <span>Restons en contact</span>
+   <h2>Contactez-nous</h2>
+   <p>Nous sommes à votre écoute.</p>
+  </div>
+  <div class="forms-grid">
+   <div class="contact-card">
+    <h3>Nos coordonnées</h3>
+    <div class="contact-info">
+     <div class="contact-item"><i class="fa-solid fa-store"></i><div><strong>Restaurant</strong><p>Restaurant Awa</p></div></div>
+     <div class="contact-item"><i class="fa-solid fa-location-dot"></i><div><strong>Adresse</strong><p>Dakar Almadies, Sénégal</p></div></div>
+     <div class="contact-item"><i class="fa-brands fa-whatsapp"></i><div><strong>WhatsApp</strong><p>+221 55 061 65 53</p></div></div>
+    </div>
+    <a class="btn" style="margin-top:25px" href="https://wa.me/22155061653" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Écrire sur WhatsApp</a>
+   </div>
+   <div class="form-card">
+    <h3>Envoyer un message</h3>
+    <form id="contactForm">
+     <div class="form-group"><label for="contactName">Nom</label><input id="contactName" required placeholder="Votre nom"></div>
+     <div class="form-group"><label for="contactPhone">Téléphone</label><input id="contactPhone" type="tel" placeholder="Votre numéro"></div>
+     <div class="form-group"><label for="contactMessage">Message</label><textarea id="contactMessage" required placeholder="Votre message..."></textarea></div>
+     <button class="btn" type="submit"><i class="fa-brands fa-whatsapp"></i> Envoyer</button>
+    </form>
+   </div>
+  </div>
+  <iframe class="map-frame" title="Localisation Dakar Almadies" loading="lazy" src="https://www.google.com/maps?q=Almadies,Dakar,Senegal&output=embed"></iframe>
+ </div>
+</section>
+
+<!-- CGV -->
+<section id="cgv" class="page-section">
+ <div class="container">
+  <div class="section-title"><span>Informations légales</span><h2>Conditions générales de vente</h2></div>
+  <div class="policy">
+   <h3>1. Présentation</h3>
+   <p>Ce site présente les produits et services du Restaurant Awa, situé à Dakar Almadies.</p>
+   <h3>2. Prix</h3>
+   <p>Les prix affichés sont indiqués en FCFA. Les tarifs peuvent être modifiés par le restaurant. Le prix confirmé au moment de la commande fait foi.</p>
+   <h3>3. Commandes</h3>
+   <p>Les commandes sont transmises par WhatsApp. Elles doivent être confirmées par le restaurant avant d'être considérées comme acceptées.</p>
+   <h3>4. Paiement et livraison</h3>
+   <p>Les modalités de paiement, les frais et les délais éventuels de livraison sont à confirmer directement avec le restaurant.</p>
+   <h3>5. Réservations</h3>
+   <p>Une demande de réservation envoyée sur WhatsApp ne constitue pas une confirmation automatique. Le restaurant doit confirmer la disponibilité.</p>
+   <h3>6. Contact</h3>
+   <p>Pour toute question, contactez Restaurant Awa au +221 55 061 65 53.</p>
+  </div>
+ </div>
+</section>
+
+<!-- POLITIQUE -->
+<section id="politique" class="page-section">
+ <div class="container">
+  <div class="section-title"><span>Confidentialité</span><h2>Politique de confidentialité</h2></div>
+  <div class="policy">
+   <h3>1. Données personnelles</h3>
+   <p>Les informations saisies dans les formulaires sont utilisées pour préparer les messages envoyés à Restaurant Awa via WhatsApp.</p>
+   <h3>2. Stockage local</h3>
+   <p>Le panier et les avis publiés sur cet appareil sont enregistrés dans le stockage local du navigateur. Ils ne sont pas automatiquement transmis à un serveur.</p>
+   <h3>3. Services externes</h3>
+   <p>Ce site utilise Google Fonts, Font Awesome, des images externes de démonstration et WhatsApp. Ces services peuvent avoir leurs propres politiques de confidentialité.</p>
+   <h3>4. Cookies</h3>
+   <p>Le site n'installe pas de système publicitaire ou de suivi personnalisé. Le stockage local sert au fonctionnement du panier et du thème.</p>
+   <h3>5. Sécurité</h3>
+   <p>Ne saisissez pas d'informations bancaires ou de mots de passe dans les formulaires de ce site.</p>
+   <h3>6. Contact</h3>
+   <p>Pour toute question relative à la confidentialité, contactez Restaurant Awa sur WhatsApp au +221 55 061 65 53.</p>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+ <div class="container">
+  <div class="footer-grid">
+   <div>
+    <h3>Restaurant Awa</h3>
+    <p>Bienvenue chez Restaurant Awa à Dakar Almadies. Découvrez notre carte et commandez facilement sur WhatsApp.</p>
+    <div class="socials">
+     <a href="https://wa.me/22155061653" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+     <a href="#contact" aria-label="Contact"><i class="fa-solid fa-envelope"></i></a>
+     <a href="#accueil" aria-label="Accueil"><i class="fa-solid fa-house"></i></a>
+    </div>
+   </div>
+   <div>
+    <h3>Navigation</h3>
+    <a href="#accueil">Accueil</a>
+    <a href="#menu">Notre menu</a>
+    <a href="#reservation">Réservation</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact">Contact</a>
+   </div>
+   <div>
+    <h3>Informations</h3>
+    <a href="#cgv">Conditions générales</a>
+    <a href="#politique">Confidentialité</a>
+    <a href="#avis">Avis clients</a>
+    <a href="#panier">Mon panier</a>
+    <p style="margin-top:15px">Dakar Almadies, Sénégal</p>
+    <p>+221 55 061 65 53</p>
+   </div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> Restaurant Awa Dakar. Tous droits réservés.</div>
+ </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/22155061653" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+ <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- MODAL DETAIL PRODUIT -->
+<div class="modal" id="productModal">
+ <div class="modal-content">
+  <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+  <div id="modalBody"></div>
+ </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+// ========================================
+// CONFIGURATION RESTAURANT AWA
+// ========================================
+
+const WHATSAPP = "22155061653";
+
+const products = [
+ {id:1,name:"Pizza Margherita",category:"pizza",min:8000,max:12000,description:"Une pizza gourmande et généreuse.",image:"images/awa-1.jpg",fallback:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800"},
+ {id:2,name:"Pizza Royale",category:"pizza",min:8000,max:12000,description:"Une pizza savoureuse pour les amateurs de gourmandise.",image:"images/awa-2.jpg",fallback:"https://images.unsplash.com/photo-1579751626657-72bc17010498?w=800"},
+ {id:3,name:"Pizza Spéciale",category:"pizza",min:8000,max:12000,description:"Découvrez notre sélection de pizzas.",image:"images/awa-3.jpg",fallback:"https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=800"},
+ {id:4,name:"Chawarma Douce",category:"chawarma",min:5000,max:6500,description:"Un chawarma gourmand à découvrir.",image:"images/awa-4.jpg",fallback:"https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800"},
+ {id:5,name:"Poisson",category:"poisson",min:8000,max:9000,description:"Un plat de poisson pour les amateurs de saveurs.",image:"images/awa-5.jpg",fallback:"https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800"},
+ {id:6,name:"Viande",category:"viande",min:7000,max:10000,description:"Une proposition gourmande autour de la viande.",image:"images/awa-6.jpg",fallback:"https://images.unsplash.com/photo-1544025162-d76694265947?w=800"},
+ {id:7,name:"Jus",category:"jus",min:1500,max:1500,description:"Une boisson fraîche pour accompagner votre repas.",image:"images/awa-7.jpg",fallback:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=800"}
+];
+
+// ========================================
+// OUTILS
+// ========================================
+
+const money = amount => new Intl.NumberFormat("fr-FR").format(amount) + " FCFA";
+
+function showToast(message){
+ const toast=document.getElementById("toast");
+ toast.textContent=message;
+ toast.classList.add("show");
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>toast.classList.remove("show"),2500);
+}
+
+function whatsapp(message){
+ const url="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message);
+ window.open(url,"_blank","noopener");
+}
+
+function imageHTML(product){
+ return `<img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='${product.fallback}'">`;
+}
+
+// ========================================
+// AFFICHAGE DES PRODUITS
+// ========================================
+
+function priceLabel(product){
+ return product.min===product.max
+  ? money(product.min)
+  : money(product.min)+" - "+money(product.max);
+}
+
+function productCard(product){
+ return `
+ <article class="product-card">
+  <div class="product-image">
+   ${imageHTML(product)}
+   <span class="product-tag">${product.category}</span>
+  </div>
+  <div class="product-info">
+   <h3>${product.name}</h3>
+   <p>${product.description}</p>
+   <div class="product-bottom">
+    <span class="price">${priceLabel(product)}</span>
+    <div style="display:flex;gap:6px">
+     <button class="add-btn" onclick="showDetail(${product.id})" aria-label="Détail ${product.name}"><i class="fa-solid fa-eye"></i></button>
+     <button class="add-btn" onclick="addToCart(${product.id})"><i class="fa-solid fa-plus"></i> Ajouter</button>
+    </div>
+   </div>
+  </div>
+ </article>`;
+}
+
+function renderProducts(list,target){
+ const element=document.getElementById(target);
+ if(!element)return;
+ element.innerHTML=list.length
+  ?list.map(productCard).join("")
+  :'<p class="empty-message">Aucun plat trouvé.</p>';
+}
+
+function renderAll(){
+ renderProducts(products,"productList");
+ renderProducts(products.filter(p=>p.category==="pizza"),"pizzaList");
+ renderProducts(products.filter(p=>p.category==="chawarma"),"chawarmaList");
+ renderProducts(products.filter(p=>["poisson","viande"].includes(p.category)),"mainDishesList");
+}
+
+renderAll();
+
+// ========================================
+// RECHERCHE ET FILTRES
+// ========================================
+
+let activeFilter="all";
+
+function applyFilters(){
+ const query=document.getElementById("searchInput").value.toLowerCase().trim();
+ const filtered=products.filter(p=>{
+  const categoryMatch=activeFilter==="all"||p.category===activeFilter;
+  const textMatch=(p.name+" "+p.description+" "+p.category).toLowerCase().includes(query);
+  return categoryMatch&&textMatch;
+ });
+ renderProducts(filtered,"productList");
+}
+
+document.querySelectorAll(".filter-btn").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  activeFilter=btn.dataset.filter;
+  applyFilters();
+ });
+});
+
+document.getElementById("searchInput").addEventListener("input",applyFilters);
+
+// ========================================
+// DETAIL PRODUIT
+// ========================================
+
+function showDetail(id){
+ const product=products.find(p=>p.id===id);
+ if(!product)return;
+
+ document.getElementById("modalBody").innerHTML=`
+  <h2>${product.name}</h2>
+  ${imageHTML(product)}
+  <p>${product.description}</p>
+  <h3 style="color:var(--primary);margin:12px 0">${priceLabel(product)}</h3>
+  <button class="btn" onclick="addToCart(${product.id});closeModal()">
+   <i class="fa-solid fa-cart-plus"></i> Ajouter au panier
+  </button>`;
+
+ document.getElementById("productModal").classList.add("show");
+}
+
+function closeModal(){
+ document.getElementById("productModal").classList.remove("show");
+}
+
+document.getElementById("modalClose").addEventListener("click",closeModal);
+document.getElementById("productModal").addEventListener("click",e=>{
+ if(e.target.id==="productModal")closeModal();
+});
+
+// ========================================
+// PANIER LOCALSTORAGE
+// ========================================
+
+let cart=[];
+
+try{
+ cart=JSON.parse(localStorage.getItem("awaCart")||"[]");
+ if(!Array.isArray(cart))cart=[];
+}catch(e){cart=[];}
+
+function saveCart(){
+ localStorage.setItem("awaCart",JSON.stringify(cart));
+ renderCart();
+}
+
+function addToCart(id){
+ const product=products.find(p=>p.id===id);
+ if(!product)return;
+
+ const existing=cart.find(item=>item.id===id);
+ if(existing){
+  existing.quantity++;
+ }else{
+  cart.push({id:product.id,quantity:1});
+ }
+ saveCart();
+ showToast(product.name+" ajouté au panier !");
+}
+
+function changeQuantity(id,amount){
+ const item=cart.find(p=>p.id===id);
+ if(!item)return;
+ item.quantity+=amount;
+ if(item.quantity<=0){
+  cart=cart.filter(p=>p.id!==id);
+ }
+ saveCart();
+}
+
+function removeItem(id){
+ cart=cart.filter(p=>p.id!==id);
+ saveCart();
+ showToast("Produit supprimé.");
+}
+
+function getTotal(){
+ return cart.reduce((sum,item)=>{
+  const product=products.find(p=>p.id===item.id);
+  return sum+(product?product.min*item.quantity:0);
+ },0);
+}
+
+function renderCart(){
+ const container=document.getElementById("cartItems");
+ const count=cart.reduce((sum,item)=>sum+item.quantity,0);
+
+ document.getElementById("cartCount").textContent=count;
+
+ if(!cart.length){
+  container.innerHTML='<p style="color:var(--muted)">Votre panier est vide. Découvrez notre menu !</p>';
+ }else{
+  container.innerHTML=cart.map(item=>{
+   const product=products.find(p=>p.id===item.id);
+   if(!product)return "";
+   return `
+   <div class="cart-item">
+    <div>
+     <h4>${product.name}</h4>
+     <p>${money(product.min)} / unité</p>
+    </div>
+    <div class="qty">
+     <button onclick="changeQuantity(${product.id},-1)" aria-label="Diminuer">-</button>
+     <strong>${item.quantity}</strong>
+     <button onclick="changeQuantity(${product.id},1)" aria-label="Augmenter">+</button>
+    </div>
+    <strong>${money(product.min*item.quantity)}</strong>
+    <button class="remove-btn" onclick="removeItem(${product.id})" aria-label="Supprimer"><i class="fa-solid fa-trash"></i></button>
+   </div>`;
+  }).join("");
+ }
+
+ document.getElementById("subtotal").textContent=money(getTotal());
+ document.getElementById("total").textContent=money(getTotal());
+}
+
+renderCart();
+
+document.getElementById("clearCart").addEventListener("click",()=>{
+ if(!cart.length)return;
+ if(confirm("Voulez-vous vraiment vider le panier ?")){
+  cart=[];
+  saveCart();
+  showToast("Panier vidé.");
+ }
+});
+
+// ========================================
+// COMMANDER SUR WHATSAPP
+// ========================================
+
+document.getElementById("checkoutBtn").addEventListener("click",()=>{
+ if(!cart.length){
+  showToast("Votre panier est vide.");
+  return;
+ }
+
+ let message="Bonjour Restaurant Awa ! Je souhaite commander :\n\n";
+
+ cart.forEach(item=>{
+  const p=products.find(product=>product.id===item.id);
+  if(p){
+   message+="• "+p.name+" x "+item.quantity+
+    " = "+money(p.min*item.quantity)+"\n";
+  }
+ });
+
+ message+="\nTotal indicatif : "+money(getTotal());
+ message+="\nAdresse : Dakar Almadies";
+ message+="\n\nMerci de confirmer ma commande et les éventuels frais de livraison.";
+
+ whatsapp(message);
+});
+
+// ========================================
+// FORMULAIRE RESERVATION
+// ========================================
+
+document.getElementById("reservationForm").addEventListener("submit",e=>{
+ e.preventDefault();
+
+ const name=document.getElementById("resName").value.trim();
+ const phone=document.getElementById("resPhone").value.trim();
+ const date=document.getElementById("resDate").value;
+ const time=document.getElementById("resTime").value;
+ const people=document.getElementById("resPeople").value;
+ const note=document.getElementById("resNote").value.trim();
+
+ if(!name||!phone||!date||!time){
+  showToast("Veuillez remplir les champs obligatoires.");
+  return;
+ }
+
+ const selectedDate=new Date(date+"T00:00:00");
+ const today=new Date();
+ today.setHours(0,0,0,0);
+
+ if(selectedDate<today){
+  showToast("Choisissez une date valide.");
+  return;
+ }
+
+ let message="Bonjour Restaurant Awa ! Je souhaite réserver une table.\n\n";
+ message+="Nom : "+name+"\nTéléphone : "+phone;
+ message+="\nDate : "+date+"\nHeure : "+time;
+ message+="\nPersonnes : "+people;
+ if(note)message+="\nMessage : "+note;
+ message+="\n\nMerci de confirmer ma réservation.";
+
+ whatsapp(message);
+});
+
+// ========================================
+// FORMULAIRE CONTACT
+// ========================================
+
+document.getElementById("contactForm").addEventListener("submit",e=>{
+ e.preventDefault();
+
+ const name=document.getElementById("contactName").value.trim();
+ const phone=document.getElementById("contactPhone").value.trim();
+ const messageText=document.getElementById("contactMessage").value.trim();
+
+ if(!name||!messageText)return;
+
+ whatsapp("Bonjour Restaurant Awa !\n\nNom : "+name+
+  "\nTéléphone : "+phone+
+  "\nMessage : "+messageText);
+});
+
+// ========================================
+// AVIS CLIENTS LOCALSTORAGE
+// ========================================
+
+let reviews=[];
+
+try{
+ reviews=JSON.parse(localStorage.getItem("awaReviews")||"[]");
+ if(!Array.isArray(reviews))reviews=[];
+}catch(e){reviews=[];}
+
+function renderReviews(){
+ const container=document.getElementById("reviewList");
+ const defaults=`
+  <div class="review"><div class="stars">★★★★★</div><p>Bienvenue chez Restaurant Awa. Découvrez notre menu et partagez votre expérience.</p><h4>Restaurant Awa</h4></div>
+  <div class="review"><div class="stars">★★★★★</div><p>Votre satisfaction nous tient à cœur. Nous serons heureux de recevoir vos commentaires.</p><h4>Restaurant Awa</h4></div>
+  <div class="review"><div class="stars">★★★★★</div><p>Merci de votre intérêt pour notre restaurant à Dakar Almadies.</p><h4>Restaurant Awa</h4></div>`;
+
+ const saved=reviews.slice().reverse().map(r=>`
+  <div class="review">
+   <div class="stars">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</div>
+   <p>${escapeHTML(r.text)}</p>
+   <h4>${escapeHTML(r.name)}</h4>
+  </div>`).join("");
+
+ container.innerHTML=saved+defaults;
+}
+
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,char=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+ })[char]);
+}
+
+document.getElementById("reviewForm").addEventListener("submit",e=>{
+ e.preventDefault();
+
+ const name=document.getElementById("reviewName").value.trim();
+ const rating=Number(document.getElementById("reviewRating").value);
+ const text=document.getElementById("reviewText").value.trim();
+
+ if(!name||!text)return;
+
+ reviews.push({name,rating,text});
+ localStorage.setItem("awaReviews",JSON.stringify(reviews));
+
+ renderReviews();
+ e.target.reset();
+ showToast("Merci pour votre avis !");
+});
+
+renderReviews();
+
+// ========================================
+// MODE SOMBRE
+// ========================================
+
+const themeToggle=document.getElementById("themeToggle");
+
+if(localStorage.getItem("awaTheme")==="dark"){
+ document.body.classList.add("dark");
+ themeToggle.innerHTML='<i class="fa-solid fa-sun"></i>';
+}
+
+themeToggle.addEventListener("click",()=>{
+ document.body.classList.toggle("dark");
+ const dark=document.body.classList.contains("dark");
+ localStorage.setItem("awaTheme",dark?"dark":"light");
+ themeToggle.innerHTML=dark
+  ?'<i class="fa-solid fa-sun"></i>'
+  :'<i class="fa-solid fa-moon"></i>';
+});
+
+// ========================================
+// MENU MOBILE
+// ========================================
+
+const menuToggle=document.getElementById("menuToggle");
+const navLinks=document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+ navLinks.classList.toggle("open");
+ menuToggle.innerHTML=navLinks.classList.contains("open")
+  ?'<i class="fa-solid fa-xmark"></i>'
+  :'<i class="fa-solid fa-bars"></i>';
+});
+
+navLinks.querySelectorAll("a").forEach(link=>{
+ link.addEventListener("click",()=>{
+  navLinks.classList.remove("open");
+  menuToggle.innerHTML='<i class="fa-solid fa-bars"></i>';
+ });
+});
+
+// ========================================
+// DATE MINIMUM RESERVATION
+// ========================================
+
+document.getElementById("resDate").min=
+ new Date().toLocaleDateString("en-CA");
+
+// ========================================
+// ANNEE AUTOMATIQUE
+// ========================================
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
